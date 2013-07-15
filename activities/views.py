@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
 def index(request):
-	recent_activities = Activity.objects.order_by('date')[:5]
+	recent_activities = Activity.objects.order_by('-date')[:50]
 	return render(request, "activities/listing.html", {"recent_activities": recent_activities})
 
 def add(request):
@@ -15,10 +15,11 @@ def add(request):
 			form.save()
 			return HttpResponseRedirect(reverse('activities:index'))
 		else:
-			 return render(request, "activities/add.html", {
+			return render(request, "activities/add.html", {
                         	"form": form,
-               		 })
+               		})
 	else:
+		# Display a blank form
 		form = ActivityForm()
 
 		return render(request, "activities/add.html", {
