@@ -6,9 +6,7 @@ My first Django webapp
 Setup
 -----
 1. Updating mysite/settings.py with your preferred database. If using sqlite3 then just update the config to point to good location for your db file.
-2. Create the database schemas:
-
-    python manage.py syncdb
+2. Create the database schemas with `python manage.py syncdb`
 
 How to run
 ----------
