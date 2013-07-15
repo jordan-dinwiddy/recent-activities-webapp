@@ -1,0 +1,11 @@
+{% if recent_activities %}
+    <ul>
+    {% for activity in recent_activities %}
+        <li><a href="#">{{ activity.name }}</a> - {{ activity.type }} - {{ activity.date }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No activities are available.</p>
+{% endif %}
+
+<a href="{% url 'activities:add_activity' %}">Add a recent activity</a>
