@@ -1,0 +1,19 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Activities</title>
+    <link rel="stylesheet" type="text/css" href="{% static "activities/css/bootstrap.css" %}">
+
+	{# Some pages might have some specific stylesheets, scripts etc that they want to include #}
+    {% block extra_head_tags %}{% endblock %}
+</head>
+<body>
+<div class="container">
+
+    {% block main_content %} [ Real content goes here ] {% endblock %}
+
+</div>
+</body>
+</html>

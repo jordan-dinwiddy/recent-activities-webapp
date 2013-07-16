@@ -1,11 +1,32 @@
-{% if recent_activities %}
-    <ul>
-    {% for activity in recent_activities %}
-        <li><a href="#">{{ activity.name }}</a> - {{ activity.type }} - {{ activity.date }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No activities are available.</p>
-{% endif %}
+{% extends "activities/base.html" %}
 
-<a href="{% url 'activities:add_activity' %}">Add a recent activity</a>
+{% block main_content %}
+    <h1>Recent Activities</h1>
+
+    <div class="pull-right">
+        <a href="{% url 'activities:add_activity' %}" class="btn btn-primary">Add an activity</a>
+    </div>
+
+    {% if recent_activities %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+        {% for activity in recent_activities %}
+            <tr>
+                <td>{{ activity.name }}</td>
+                <td>{{ activity.type }}</td>
+                <td>{{ activity.date }}</td>
+            </tr>
+        {% endfor %}
+        
+        </table>
+    {% else %}
+        <p>No activities are available.</p>
+    {% endif %}
+{% endblock %}
